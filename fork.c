@@ -14,6 +14,8 @@ int main(){
   printf("%d about to create 2 child processes.\n", getpid());
   pid_t p;
   int status;
+  int random;
+  int random1;
   p = fork();
   if(p<0){
     perror("Fork failed.\n");
@@ -21,7 +23,6 @@ int main(){
   }
   else if (p == 0){
     srand(getpid());
-    int random;
     random = rand() % 5 + 1;
     printf("%d %dsec\n", getpid(), random);
     sleep(random);
@@ -36,8 +37,7 @@ int main(){
     }
     else if (p1 == 0){
       srand(getpid());
-      int random;
-      random = rand() % 5 + 1;
+      random1 = rand() % 5 + 1;
       printf("%d %dsec\n", getpid(), random);
       sleep(random);
       printf("%d finished after %d seconds.\n", getpid(), random);
