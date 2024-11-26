@@ -44,8 +44,11 @@ int main(){
       printf("%d finished after %d seconds.\n", getpid(), random);
     }
     else{
+      int random;
       cpid = wait(&status);
-      printf("Main Process %d is done. Child %d slept for _SEC_ sec\n", getpid(), cpid);
+      srand(cpid);
+      random = rand() % 5 + 1;
+      printf("Main Process %d is done. Child %d slept for %d sec\n", getpid(), cpid, random);
     }
   }
   return 0;
